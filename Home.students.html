@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MC2 - Home</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/x-icon" href="gajlogo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  </head>
+  <body>
+    <header class="header">
+      <h1>Welcome to the MC2 Student Page!</h1>
+    </header>
+    <main>
+      <section>
+        <h2>Student Resources</h2>
+        <p>Here you can find resources and information for students. Anyone is welcome here.</p>
+        <ul>
+          <li><a href="assignments.html">Assignments</a></li>
+          <li><a href="schedule.html">Class Schedule</a></li>
+          <li><a href="resources.html">Study Resources</a></li>
+          <li><a href="forum.html">Student Forum</a></li>
+        </ul>
+      </section>
+      <section>
+        <h2>Announcements</h2>
+        <p>Stay updated with the latest announcements and news.</p>
+        <ul>
+          <li>New assignment posted for Math 101</li>
+          <li>Upcoming exam schedule released</li>
+          <li>Join the new study group for Physics</li>
+        </ul>
+      </section>
+    </main>
+    <footer class="footer">
+      <p>&copy; 2025 MC2 Learning Platform. All rights reserved.</p>
+      <a href="index.html">Back to Home</a>
+    </footer>
+
+    <!-- Contact Form -->
+    <div class="contact-form">
+      <h2>Contact Us</h2>
+      <form action="emails.html" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        
+        <button type="submit">Send</button>
+      </form>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div id="signupModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="document.getElementById('signupModal').style.display='none'">&times;</span>
+        <form action="/Home.students.html" method="POST">
+          <h2>Sign Up</h2>
+          <input type="text" name="username" placeholder="Username" required>
+          <input type="password" name="password" placeholder="Password" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="text" name="school" placeholder="School" required> <!-- New input field -->
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Close the modal when clicking outside of it
+      window.onclick = function(event) {
+        const modal = document.getElementById('signupModal');
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    </script>
+  </body>
+</html>

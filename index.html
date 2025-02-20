@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <title> MC2 - Home </title>
+    <link rel="icon" type="image/x-icon" href="gajlogo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+      /* Modal styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+        padding-top: 60px;
+      }
+      .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+      }
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>
+        <img src="gajlogo.png" height="100" width="100">
+        <span class="orange">MC2</span>
+        .....<a href="AOC.html">About Our Club</a>.....
+        <a href="FYS.html">Find Your School</a>.....
+        <a href="Our_Staff.html">Our Staff</a>.....
+        <a href="curriculums.html">Curriculums</a>
+        <form action="/login" method="POST" style="float: right;">
+          <input type="text" name="username" placeholder="Username" required>
+          <input type="password" name="password" placeholder="Password" required>
+          <input type="text" name="school" placeholder="School" required> <!-- New input field -->
+          <button type="submit">Login</button>
+          <button type="button" onclick="document.getElementById('signupModal').style.display='block'">Sign Up</button>
+        </form>
+        <a href="search.html">
+          <img style="float: right;" src="search.jpg" height="7%" width="6%" onclick="">
+        </a>
+      </h1>
+    </div>
+    <img src="kidscoding-1.jpg" height="500px" width="100%" alt="Image of MC2 students coding"/>
+    <h2>The MC2 stands for mayer coding club. Oscar Mayer is a public school in Chicago Illinois. The MC2 is trying to spread the club to other Chicago Public Schools (CPS). The MC2 teaches kids how to code if you are currently looking for a coding program for
+        your kid you may consider it a challange. The MC2's mission statment is: "We help kids accoplish their dreams with programming." The MC2 creater was Jack Kelly. Jack went to Oscar Mayer and currently is in 3rd grade. Jack had the idea for the club at the end
+        of first grade, then he worked hard over the summer. Then a few weeks into school the next school year the club had it's first meeting.
+    </h2>
+    <h1>
+      <div class="divs pad">
+        <p>The MC2 uses a coding language called Scratch</p>
+        <img src="scratch.jpg" height="25%" width="50%"/>
+      </div>
+      <div class="divs pad">
+        <p>We also use two other websites like code.org and tynker (not tynker cad) </p>
+        <img src="code-org.png" height="25%" width="50%"/><img src="tynker.jpg" height="25%" width="50%"/>
+      </div>
+      <div class="divs pad">
+        <p>Information:</br>
+          Original Location: 2250 N Clifton Ave, Chicago, IL 60614
+        </p>
+        <a href="FYS.html">To sign up click here</a>
+      </div>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </h1>
+    <div class="footer" style="align-content: left;">
+      <h3>
+      MC2 </br>
+      Pages: </br>
+      <a href="Home.html">Home</a>
+      <a href="AOC.html">About our club</a></br>
+      <a href="FYS.html">Find your school</a></br>
+      <a href="Our_Staff.html">Our Staff</a></br>
+      <a href="curriculums.html">Curriculums</a></br>
+      &#169;, MC2 2025
+      </h3>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form">
+      <h2>Contact Us</h2>
+      <form id="contactForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        
+        <button type="submit">Send</button>
+      </form>
+      <p id="confirmationMessage" style="display:none;">Your message has been sent</p>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div id="signupModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="document.getElementById('signupModal').style.display='none'">&times;</span>
+        <form action="/Home.students.html" method="POST">
+          <h2>Sign Up</h2>
+          <input type="text" name="username" placeholder="Username" required>
+          <input type="password" name="password" placeholder="Password" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="text" name="school" placeholder="School" required> <!-- New input field -->
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Close the modal when clicking outside of it
+      window.onclick = function(event) {
+        const modal = document.getElementById('signupModal');
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+
+      // Handle contact form submission
+      document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        fetch('/contact', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => {
+          if (response.ok) {
+            document.getElementById('confirmationMessage').style.display = 'block';
+            this.reset();
+          } else {
+            alert('There was a problem with your submission. Please try again.');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('There was a problem with your submission. Please try again.');
+        });
+      });
+    </script>
+  </body>
+</html>
