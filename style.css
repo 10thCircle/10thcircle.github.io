@@ -4,7 +4,7 @@ body {
 
 p {
     color: rgb(255, 255, 255);
-    font-size: inherit;
+    
 }
 
 h1 {
@@ -40,8 +40,8 @@ h1 {
 
 h2 {
     color: white;
-    text-align: center;
-    font-size: 50px;
+    text-align: left;
+    font-weight: none;
 }
 
 .divs {
