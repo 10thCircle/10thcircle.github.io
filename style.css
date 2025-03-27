@@ -140,3 +140,8 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
     background-color: #0056b3;
 }
+.header-image {
+    max-height: 500px;
+    min-height: min-content;
+    width: 100%;
+}
