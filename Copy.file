@@ -1,0 +1,41 @@
+1. <img src="Images/kidscoding-1.jpg" height="500px" width="100%" alt="Image of 10thCircle students coding">
+      <div class="header">
+        <h1>
+          <img src="Images/gajlogo.png" height="100" width="100">
+          <span class="orange">10thCircle</span>
+          .....<a href="HTML/AOC.html">About Our Club</a>.....
+          <a href="HTML/FYS.html">Find Your School</a>.....
+          <a href="HTML/Our_Staff.html">Our Staff</a>.....
+          <a href="HTML/Curriculums.html">Curriculums</a>.....<a href="HTML/projects.html">Projects</a>
+          <a href="HTML/Search.html">
+            <img style="float: right;" src="Images/search.jpg" height="7%" width="6%" onclick="">
+          </a>
+        </h1>
+      </div>
+2. <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container">
+        <a class="navbar-brand logo" href="index.html">10thCircle</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul id="topMenu" class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="HTML/AOC.html">About Our Club</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="HTML/FYS.html">Find Your School</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="HTML/Our_Staff.html">Our Staff</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="HTML/Curriculums.html">Curriculums</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="HTML/projects.html">Projects</a>
+      </div>
+    </nav>

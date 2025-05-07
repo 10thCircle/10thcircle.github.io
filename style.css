@@ -145,3 +145,11 @@ form input[type="submit"]:hover {
     min-height: min-content;
     width: 100%;
 }
+.bg-dark {
+    background-color: rgb(238, 238, 238);
+}
+.logo {
+    font-family: "Merriweather", serif;
+    font-weight: bold;
+    color: orange
+}
