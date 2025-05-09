@@ -217,7 +217,7 @@ form input[type="submit"]:hover {
     transform: translateY(8px) rotate(45deg);
 }
 
-.hamburger.active .bar:nth-child(3) {
+.hamburger.active .bar:nth-child(6) {
     transform: translateY(-8px) rotate(-45deg);
 }
 
