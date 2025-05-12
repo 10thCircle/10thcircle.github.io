@@ -104,6 +104,7 @@ a {
     background-color: rgb(50, 50, 50);
     width: 100%;
     height: fit-content;
+    box-align: bottom;
 }
 
 /* New styles for modern login and sign-up forms */
