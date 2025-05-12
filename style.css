@@ -217,11 +217,11 @@ form input[type="submit"]:hover {
     transform: translateY(8px) rotate(45deg);
 }
 
-.hamburger.active .bar:nth-child(6) {
+.hamburger.active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-@media only screen and (max-width: 768px) {
+@media (max-width: 768px) {
     .hamburger {
         display: flex;
     }
@@ -232,12 +232,15 @@ form input[type="submit"]:hover {
         position: fixed;
         left: -100%;
         top: 5rem;
-        background-color: #fff;
+        background-color: #333;
         width: 100%;
         border-radius: 10px;
         text-align: center;
         transition: 0.3s;
-        box-shadow:
-        0 10px 27px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-menu.active {
+        left: 0;
     }
 }
