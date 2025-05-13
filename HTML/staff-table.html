@@ -131,11 +131,15 @@
     <script>
         document.getElementById('pdfUpload').addEventListener('change', function(event) {
             const file = event.target.files[0];
-            if (file.type === "application/pdf") {
+            if (file && file.type === "application/pdf" && file.size <= 5 * 1024 * 1024) { // Limit file size to 5MB
                 const fileURL = URL.createObjectURL(file);
-                document.getElementById('pdfPreview').src = fileURL;
+                const pdfPreview = document.getElementById('pdfPreview');
+                pdfPreview.src = fileURL;
+                pdfPreview.onload = function() {
+                    URL.revokeObjectURL(fileURL); // Revoke the object URL after loading
+                };
             } else {
-                alert("Please upload a valid PDF file.");
+                alert("Please upload a valid PDF file (max size: 5MB).");
             }
         });
     </script>
