@@ -2,48 +2,167 @@
 <html>
   <head>
     <link rel="stylesheet" href="style.css">
-    <title> User - Home</title>
+    <title>User - Home</title>
     <link rel="icon" type="image/x-icon" href="Images/gajlogo.png">
-    <script defer src="script.js"></script> <!-- Ensures the script runs after the DOM is loaded -->
+    <script defer src="script.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta name="viewport" content="height=device-height, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script>
-        function checkRole() {
-            const userRole = "../../server.js".
-        }
+      // Fetch user information from the server
+      function fetchUsers() {
+        fetch('/api/users')
+          .then(response => response.json())
+          .then(data => {
+            console.log('Users:', data);
+            const userList = document.getElementById('user-list');
+            userList.innerHTML = '';
+            data.forEach(user => {
+              const li = document.createElement('li');
+              li.textContent = `${user.userName} - ${user.name} - ${user.email} - ${user.role}`;
+              userList.appendChild(li);
+            });
+          })
+          .catch(error => console.error('Error fetching users:', error));
+      }
+
+      // Add user information to the server
+      function addUser() {
+        const userName = document.getElementById('userName').value;
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const role = document.getElementById('role').value;
+
+        fetch('/api/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ name, email, role }),
+        })
+          .then(response => {
+            if (response.ok) {
+              console.log('User added successfully');
+              fetchUsers(); // Refresh the user list
+            } else {
+              console.error('Error adding user');
+            }
+          })
+          .catch(error => console.error('Error adding user:', error));
+      }
+
+      // Check login status
+      function checkLogin() {
+        const display = document.getElementById('user.nameDisplay');
+        const logOut = document.getElementById('logOut');
+        const logIn = document.getElementById('logIn');
+        fetch('/api/login')
+          .then(response => response.json())
+          .then(data => {
+            if (data.loggedIn) {
+              console.log('User is logged in');
+              display.textContent = `Welcome, ${data.user.name}`;
+              logIn.style.display = 'none';
+              logOut.style.display = 'block';
+              logOut.addEventListener('click', () => {
+                fetch('/api/logout', { method: 'POST' })
+                  .then(response => {
+                    if (response.ok) {
+                      console.log('User logged out');
+                      display.textContent = '';
+                    } else {
+                      console.error('Error logging out');
+                    }
+                  })
+                  .catch(error => console.error('Error during logout:', error));
+              });
+            } else {
+              console.log('User is not logged in');
+              logIn.style.display = 'block';
+              logOut.style.display = 'none';
+              display.textContent = '';
+            }
+          })
+          .catch(error => console.error('Error checking login:', error));
+      }
+
+      // Login function
+      function loginUser() {
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+
+        fetch('/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, password }),
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data.loggedIn) {
+              console.log('Login successful:', data.user);
+              document.getElementById('user.nameDisplay').textContent = `Welcome, ${data.user.name}`;
+            } else {
+              console.error('Login failed:', data.message);
+              alert('Invalid email or password');
+            }
+          })
+          .catch(error => console.error('Error during login:', error));
+      }
     </script>
   </head>
-  <body>
-    <header class="header">
-      <nav class="navbar">
-        <a href="https://10thcircle.github.io/index.html" class="nav-logo">10th Circle</a>
-        <ul class="nav-menu">
-          <li class="nav-item">
-            <a href="https://10thcircle.github.io/index.html" class="nav-link">Home</a>
-          </li>
-          <li class="nav-item">
-            <a href="HTML/AOC.html" class="nav-link">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a href="HTML/FYS.html" class="nav-link">Schools</a>
-          </li>
-          <li class="nav-item">
-            <a href="HTML/Our_Staff.html" class="nav-link">Our Staff</a>
-          </li>
-          <li class="nav-item">
-            <a href="HTML/curriculums.html" class="nav-link">Curriculums</a>
-          </li>
-          <li class="nav-item">
-            <a href="HTML/projects.html" class="nav-link">Projects</a>
-          </li>
-        </ul>
-        <div class="hamburger">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </div>
-      </nav>
-    </header>
+  <body onload="fetchUsers() && checkLogin()">
+    <div class="container">
+      <div class="content">
+        <header class="header">
+          <nav class="navbar">
+            <a href="https://10thcircle.github.io/index.html" class="nav-logo">10th Circle</a>
+            <ul class="nav-menu">
+              <li class="nav-item"><a href="https://10thcircle.github.io/index.html" class="nav-link">Home</a></li>
+              <li class="nav-item"><a href="HTML/AOC.html" class="nav-link">About Us</a></li>
+              <li class="nav-item"><a href="HTML/FYS.html" class="nav-link">Schools</a></li>
+              <li class="nav-item"><a href="HTML/Our_Staff.html" class="nav-link">Our Staff</a></li>
+              <li class="nav-item"><a href="HTML/curriculums.html" class="nav-link">Curriculums</a></li>
+              <li class="nav-item"><a href="HTML/projects.html" class="nav-link">Projects</a></li>
+              <form class="nav-item">
+                <select>
+                  <option href="#userForm">Log-in</option>
+                  <option id="logOut">Log-Out</option>
+                  <p id="user.nameDisplay"></p>
+                </select>
+              </form>
+            </ul>
+            <div class="hamburger">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+          </nav>
+        </header>
+        <section id="userForm">
+          <main self-align: left;>
+            <h1>User Information</h1>
+            <ul id="user-list"></ul>
+            <h2>Add User</h2>
+            <form onsubmit="event.preventDefault(); checkLogin();" id="add-user-form">
+              <input type="text" id="name" placeholder="Name" required />
+              <input type="email" id="email" placeholder="Email" required />
+              <input type="text" id="role" placeholder="Role" required />
+              <button type="submit">Add User</button>
+            </form>
+          </main>
+        </section>
+        <main>
+          <h1>Login</h1>
+          <form onsubmit="event.preventDefault(); loginUser();">
+            <input type="email" id="login-email" placeholder="Email" required />
+            <input type="password" id="login-password" placeholder="Password" required />
+            <button type="submit">Login</button>
+          </form>
+          <p id="user.nameDisplay"></p>
+        </main>
+      </div>
+    </div>
   </body>
+</html>
