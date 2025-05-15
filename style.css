@@ -245,3 +245,33 @@ form input[type="submit"]:hover {
         left: 0;
     }
 }
+
+/* New styles for forms container */
+.forms-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+#userForm {
+  flex: 1;
+  text-align: left;
+}
+
+#loginForm {
+  flex: 1;
+  text-align: right;
+}
+
+/* Responsive: stack vertically on small screens */
+@media (max-width: 800px) {
+  .forms-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  #userForm, #loginForm {
+    text-align: left;
+  }
+}

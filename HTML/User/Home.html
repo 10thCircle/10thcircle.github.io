@@ -3,7 +3,7 @@
   <head>
     <link rel="stylesheet" href="https://10thcircle.github.io/style.css">
     <title>User - Home</title>
-    <link rel="icon" type="image/x-icon" href="Images/gajlogo.png">
+    <link rel="icon" type="image/x-icon" href="../../Images/gajlogo.png">
     <script defer src="../../script.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -19,7 +19,7 @@
             userList.innerHTML = '';
             data.forEach(user => {
               const li = document.createElement('li');
-              li.textContent = `${user.userName} - ${user.name} - ${user.email} - ${user.role}`;
+              li.textContent = `${user.name} - ${user.email} - ${user.role}`;
               userList.appendChild(li);
             });
           })
@@ -28,17 +28,17 @@
 
       // Add user information to the server
       function addUser() {
-        const userName = document.getElementById('userName').value;
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const role = document.getElementById('role').value;
+        const password = document.getElementById('password').value;
 
         fetch('/api/users', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ name, email, role }),
+          body: JSON.stringify({ name, email, role, password }),
         })
           .then(response => {
             if (response.ok) {
@@ -147,6 +147,40 @@
             .catch(error => console.error('Error during logout:', error));
         });
       }
+
+      function checkRole() {
+        fetch('/api/login')
+          .then(response => response.json())
+          .then(data => {
+            const main = document.querySelector('main');
+            if (!main) return;
+            // Clear previous role-based content
+            main.innerHTML = '';
+            if (data.loggedIn && data.user && data.user.role) {
+              let content = '';
+              switch (data.user.role) {
+                case 'teacher':
+                  content = '<h3>Teacher Dashboard</h3><p>Welcome, teacher! Here you can manage your classes and students.</p>';
+                  break;
+                case 'student':
+                  content = '<h3>Student Dashboard</h3><p>Welcome, student! Here you can view your assignments and progress.</p><a href="toutor.html">Click here to get a privite tutor</a>';
+                  break;
+                case 'parent':
+                  content = '<h3>Parent Dashboard</h3><p>Welcome, parent! Here you can monitor your child\'s progress.</p>';
+                  break;
+                case 'school':
+                  content = '<h3>School Admin Dashboard</h3><p>Welcome, school admin! Here you can manage school-wide settings.</p>';
+                  break;
+                default:
+                  content = `<h3>Welcome, ${data.user.role}!</h3>`;
+              }
+              main.innerHTML = content;
+            } else {
+              main.innerHTML = '<p>Please log in to see your dashboard.</p>';
+            }
+          })
+          .catch(error => console.error('Error checking role:', error));
+      }
     </script>
   </head>
   <body onload="fetchUsers() && checkLogin()">
@@ -177,26 +211,38 @@
             </div>
           </nav>
         </header>
-        <section id="userForm">
-         <h1>User Information</h1>
+        <div class="forms-container">
+          <section id="userForm">
+            <h1>User Information</h1>
             <ul id="user-list"></ul>
             <h2>Add User</h2>
             <form onsubmit="event.preventDefault(); checkLogin();" id="add-user-form">
               <input type="text" id="name" placeholder="Name" required />
               <input type="email" id="email" placeholder="Email" required />
-              <input type="text" id="role" placeholder="Role" required />
+              <select id="role" required>
+                <option value="" disabled selected>Select Role</option>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+                <option value="parent">Parent</option>
+                <option value="school">School</option>
+              </select>
+              <input type="password" id="password" placeholder="Password" required />
               <button type="submit">Add User</button>
             </form>   
-        </section>
-        <section id="loginForm">
-          <h1 id="tag">Login</h1>
-          <form onsubmit="event.preventDefault(); loginUser();" id="login-form">
-            <input type="email" id="login-email" placeholder="Email" required />
-            <input type="password" id="login-password" placeholder="Password" required />
-            <button type="submit">Login</button>
-          </form>
-          <p id="user.nameDisplay"></p>
-        </section>
+          </section>
+          <section id="loginForm">
+            <h2 id="tag">Login</h2>
+            <form onsubmit="event.preventDefault(); loginUser();" id="login-form">
+              <input type="email" id="login-email" placeholder="Email" required />
+              <input type="password" id="login-password" placeholder="Password" required />
+              <button type="submit">Login</button>
+            </form>
+            <p id="user.nameDisplay"></p>
+          </section>
+          <main onload="checkRole()">
+
+          </main>
+        </div>
       </div>
     </div>
   </body>
