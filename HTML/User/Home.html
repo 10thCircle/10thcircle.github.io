@@ -120,10 +120,32 @@
                 // loginForm.disabled = true;
                 // userForm.disabled = true;
                 // tag.disabled = true;
+                wait(3600)
+                loginForm.style.display = 'block';
+                userForm.style.display = 'block';
+                tag.style.display = 'block';
+                loginErrors = 0
+                alert('You can try logging in again now.');
+                // Re-enable the login form after a certain period
               }
             }
           })
           .catch(error => console.error('Error during login:', error));
+      }
+      function logOut() {
+        const logOut = document.getElementById('logOut');
+        logOut.addEventListener('click', () => {
+          fetch('/api/logout', { method: 'POST' })
+            .then(response => {
+              if (response.ok) {
+                console.log('User logged out');
+                document.getElementById('user.nameDisplay').textContent = '';
+              } else {
+                console.error('Error logging out');
+              }
+            })
+            .catch(error => console.error('Error during logout:', error));
+        });
       }
     </script>
   </head>
@@ -142,8 +164,8 @@
               <li class="nav-item"><a href="HTML/projects.html" class="nav-link">Projects</a></li>
               <form class="nav-item" id="userForm">
                 <select>
-                  <option href="#userForm">Log-in</option>
-                  <option id="logOut" onsubmit="">Log-Out</option>
+                  <option href="#loginForm">Log-in</option>
+                  <option id="logOut" onclick="logOut()">Log-Out</option>
                   <p id="user.nameDisplay"></p>
                 </select>
               </form>
@@ -156,8 +178,7 @@
           </nav>
         </header>
         <section id="userForm">
-          <main self-align: left;>
-            <h1>User Information</h1>
+         <h1>User Information</h1>
             <ul id="user-list"></ul>
             <h2>Add User</h2>
             <form onsubmit="event.preventDefault(); checkLogin();" id="add-user-form">
@@ -165,10 +186,9 @@
               <input type="email" id="email" placeholder="Email" required />
               <input type="text" id="role" placeholder="Role" required />
               <button type="submit">Add User</button>
-            </form>
-          </main>
+            </form>   
         </section>
-        <main>
+        <section id="loginForm">
           <h1 id="tag">Login</h1>
           <form onsubmit="event.preventDefault(); loginUser();" id="login-form">
             <input type="email" id="login-email" placeholder="Email" required />
@@ -176,7 +196,7 @@
             <button type="submit">Login</button>
           </form>
           <p id="user.nameDisplay"></p>
-        </main>
+        </section>
       </div>
     </div>
   </body>
