@@ -160,38 +160,19 @@
               let content = '';
               switch (data.user.role) {
                 case 'teacher':
-                  content = '<h3>Teacher Dashboard</h3><p>Welcome, teacher! Here you can manage your classes and students.</p><button id="create-meeting">Create Meeting</button>';
-                  document.getElementById('create-meeting').addEventListener('click', () => {
-                    const meetingCode = prompt('Enter a meeting code:');
-                    if (meetingCode) {
-                      alert(`Meeting created with code: ${meetingCode}`);
-                      // Redirect to the meeting URL
-                      const meetingUrl = `https://10thcircle.github.io/meet/${meetingCode}`; // Replace with actual meeting URL
-                      window.location.href = meetingUrl;
-                    } else {
-                      alert('Please enter a meeting code.');
-                    }
+                  content = `<h3>Teacher Dashboard</h3><p>Welcome, teacher! Here you can manage your classes and students.
+                            <button id="see-meeting">See Meeting</button>
+                  ` ;
+                  document.getElementById('see-meeting').addEventListener('click', () => {
+                    window.location.href = 'https://10thcircle.github.io/meet';
                   });
                   break;
                 case 'student':
-                  content = '<h2>Wellcome Student please enter your meeting code</h2><input type="text" id="meeting-code" placeholder="Enter meeting code"><button id="join-meeting">Join Meeting</button>';
-                  document.getElementById('join-meeting').addEventListener('click', () => {
-                    const meetingCode = document.getElementById('meeting-code').value;
-                    if (meetingCode) {
-                      alert(`Joining meeting with code: ${meetingCode}`);
-                          if (meetingCode.length < 5) {
-                            alert('Meeting code must be at least 5 characters long.');
-                            return;
-                          }
-                          if (meetingCode.error == true) {
-                            alert('There was an error with the meeting code. Most likly the meeting code you entered does not exist.');
-                          }
-                          // Redirect to the meeting URL
-                          const meetingUrl = `https://10thcircle.github.io/meet/${meetingCode}`; // Replace with actual meeting URL
-                          window.location.href = meetingUrl;
-                    } else {
-                      alert('Please enter a meeting code.');
-                    }
+                  content =`<h3>Wellcome Student</h3>
+                            <button id="see-meeting">See Meeting</button>
+                  `;
+                  document.getElementById('see-meeting').addEventListener('click', () => {
+                    window.location.href = 'https://10thcircle.github.io/meet';
                   });
                   break;
                 case 'parent':
