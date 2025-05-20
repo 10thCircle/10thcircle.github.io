@@ -160,16 +160,19 @@
               let content = '';
               switch (data.user.role) {
                 case 'teacher':
-                  content = '<h3>Teacher Dashboard</h3><p>Welcome, teacher! Here you can manage your classes and students.</p>';
+                  content = `<h3>Teacher Dashboard</h3><p>Welcome, teacher! Here you can manage your classes and students.</p>`;
                   break;
                 case 'student':
-                  content = '<h3>Student Dashboard</h3><p>Welcome, student! Here you can view your assignments and progress.</p><a href="toutor.html">Click here to get a privite tutor</a>';
+                  content = `<h3>Student Dashboard</h3><p>Welcome, student! Here you can view your assignments and progress.</p>
+                  <a href="toutor.html">Click here to get a privite tutor</a>
+                            
+                  `;
                   break;
                 case 'parent':
-                  content = '<h3>Parent Dashboard</h3><p>Welcome, parent! Here you can monitor your child\'s progress.</p>';
+                  content = `<h3>Parent Dashboard</h3><p>Welcome, parent! Here you can monitor your child\'s progress.</p>`;
                   break;
                 case 'school':
-                  content = '<h3>School Admin Dashboard</h3><p>Welcome, school admin! Here you can manage school-wide settings.</p>';
+                  content = `<h3>School Admin Dashboard</h3><p>Welcome, school admin! Here you can manage school-wide settings.</p>`;
                   break;
                 default:
                   content = `<h3>Welcome, ${data.user.role}!</h3>`;
@@ -240,7 +243,12 @@
             <p id="user.nameDisplay"></p>
           </section>
           <main onload="checkRole()">
-
+            <section id="totors">
+              <h2>Available Tutors</h2>
+              <ul id="tutor-list"></ul>
+                <li><a href="---_----.html"><img src="image-placeholder.jpg"/><p>--- ----</p></br><p>Discription: Teaches Scratch, HTML, CSS, and Javascript. (They) are great for beginners</p></a></li>
+                <li><a href="---_----.html"><img src="image-placeholder.jpg"/><p>--- ----</p></br><p>Discription: Teaches Scratch, HTML, CSS, and Javascript. (They) are great for beginners</p></a></li>
+                <li><a href="---_----.html"><img src="image-placeholder.jpg"/><p>--- ----</p></br><p>Discription: Teaches Scratch, HTML, CSS, and Javascript. (They) are great for beginners</p></a></li>
           </main>
         </div>
       </div>
