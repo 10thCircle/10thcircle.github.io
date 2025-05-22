@@ -1,8 +1,8 @@
 const express = require('express');
-const mysql = require('mysql2');
+const { Pool } = require('pg');
 const bodyParser = require('body-parser');
 const app = express();
-const port = ___; // Fill in the port number (e.g., 3000)
+const port = 3000; // Set your desired port number
 
 // Middleware to parse JSON data
 app.use(bodyParser.json());
@@ -10,52 +10,43 @@ app.use(bodyParser.json());
 // Serve static files (HTML, CSS, JS) from the current directory
 app.use(express.static(__dirname));
 
-// Create a connection to the database
-const connection = mysql.createConnection({
-  host: '___', // Fill in your database host (e.g., 'localhost' or an IP address)
-  user: '___', // Fill in your database username
-  password: '___', // Fill in your database password
-  database: '___' // Fill in your database name
-});
-
-// Connect to the database
-connection.connect(err => {
-  if (err) {
-    console.error('Error connecting to the database:', err.message);
-    return;
-  }
-  console.log('Connected to the SQL server.');
+// Create a connection pool to the PostgreSQL database
+const pool = new Pool({
+  host: 'localhost', // Your PostgreSQL host
+  user: 'your_username', // Your PostgreSQL username
+  password: 'your_password', // Your PostgreSQL password
+  database: 'your_database', // Your PostgreSQL database name
+  port: 5432 // Default PostgreSQL port
 });
 
 // API endpoint to fetch data from the database
-app.get('/api/data', (req, res) => {
-  const query = 'SELECT * FROM ___'; // Fill in your table name
-  connection.query(query, (err, results) => {
-    if (err) {
-      console.error('Error executing query:', err.message);
-      res.status(500).send('Error fetching data');
-      return;
-    }
-    res.json(results); // Send the query results as JSON
-  });
+app.get('/api/data', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM your_table'); // Replace with your table name
+    res.json(result.rows);
+  } catch (err) {
+    console.error('Error executing query:', err.message);
+    res.status(500).send('Error fetching data');
+  }
 });
 
 // API endpoint to handle user login
-app.post('/api/login', (req, res) => {
+app.post('/api/login', async (req, res) => {
   const { email, password } = req.body; // Expecting email and password from the client
-  const query = 'SELECT * FROM users WHERE email = ? AND password = ?'; // Replace 'users' with your table name
-  connection.query(query, [email, password], (err, results) => {
-    if (err) {
-      console.error('Error during login:', err.message);
-      res.status(500).send('Error during login');
-      return;
-    }
-    if (results.length > 0) {
-      res.json({ loggedIn: true, user: results[0] }); // Send user data if login is successful
+  try {
+    const result = await pool.query(
+      'SELECT * FROM users WHERE email = $1 AND password = $2', // Replace 'users' with your table name
+      [email, password]
+    );
+    if (result.rows.length > 0) {
+      res.json({ loggedIn: true, user: result.rows[0] });
     } else {
       res.json({ loggedIn: false, message: 'Invalid email or password' });
     }
-  });
+  } catch (err) {
+    console.error('Error during login:', err.message);
+    res.status(500).send('Error during login');
+  }
 });
 
 // Start the server
