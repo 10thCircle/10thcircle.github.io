@@ -13,16 +13,16 @@ app.use(express.static(__dirname));
 // Create a connection pool to the PostgreSQL database
 const pool = new Pool({
   host: 'localhost', // Your PostgreSQL host
-  user: 'your_username', // Your PostgreSQL username
-  password: 'your_password', // Your PostgreSQL password
-  database: 'your_database', // Your PostgreSQL database name
-  port: 5432 // Default PostgreSQL port
+  user: 'postgres', // Your PostgreSQL username
+  password: '022116', // Your PostgreSQL password
+  database: 'users', // Your PostgreSQL database name
+  port: 5225 // Default PostgreSQL port
 });
 
 // API endpoint to fetch data from the database
 app.get('/api/data', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM your_table'); // Replace with your table name
+    const result = await pool.query('SELECT * FROM users'); // Replace with your table name
     res.json(result.rows);
   } catch (err) {
     console.error('Error executing query:', err.message);
@@ -39,7 +39,8 @@ app.post('/api/login', async (req, res) => {
       [email, password]
     );
     if (result.rows.length > 0) {
-      res.json({ loggedIn: true, user: result.rows[0] });
+      const { id, email, role } = result.rows[0];
+      res.json({ loggedIn: true, user: { id, email, role } });
     } else {
       res.json({ loggedIn: false, message: 'Invalid email or password' });
     }
