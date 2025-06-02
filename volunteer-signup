@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://10thcircle.github.io/style.css">
+    <title> 10th Circle - Volunteer Sign-up </title>
+    <link rel="icon" type="image/x-icon" href="../Images/gajlogo.png">
+  </head>
+  <body>
+    <div class="header">
+      <h1>
+        <img src="../Images/gajlogo.png" height="100" width="100">
+        <span class="orange">10th Circle</span>
+        .....<a href="https://10thcircle.github.io/">Home</a>.....
+        <a href="AOC">About Our Club</a>.....
+        <a href="FYS">Find Your School</a>.....
+        <a href="Our_Staff">Our Staff</a>.....
+        <a href="curriculums">Curriculums</a>.....
+        <a href="projects">Projects</a>
+        <a href="search">
+          <img style="float: right;" src="../Images/search.jpg" height="100" width="100" onclick="">
+        </a>
+      </h1>
+    </div>
+
+    <img src="../Images/coding-4.jpg" height="500px" width="100%" alt="Image of 10th Circle students coding"/>
+
+    <h2>Volunteer Sign-up Form</h2>
+    <form action="/submit-volunteer-signup" method="post">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name"><br><br>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email"><br><br>
+      <label for="availability">Availability:</label>
+      <textarea id="availability" name="availability"></textarea><br><br>
+      <label for="language">Programming Language you want to teach: </label>
+      <select id="language" name="language" multiple>
+        <option value="scratch">Scratch</option>
+        <option value ="html">HTML</option>
+        <option value ="css">CSS</option>
+        <option value ="javascript">JavaScript</option>
+        <option value ="everything">All of the Above</option>
+      </select>
+      <input type="submit" value="Submit">
+    </form>
+
+    <div class="footer">
+      &copy; 2023 10th Circle
+    </div>
+  </body>
+</html>
