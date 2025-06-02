@@ -3,11 +3,11 @@
         <h1>
           <img src="Images/gajlogo.png" height="100" width="100">
           <span class="orange">10thCircle</span>
-          .....<a href="HTML/AOC.html">About Our Club</a>.....
-          <a href="HTML/FYS.html">Find Your School</a>.....
-          <a href="HTML/Our_Staff.html">Our Staff</a>.....
-          <a href="HTML/Curriculums.html">Curriculums</a>.....<a href="HTML/projects.html">Projects</a>
-          <a href="HTML/Search.html">
+          .....<a href="AOC.html">About Our Club</a>.....
+          <a href="FYS.html">Find Your School</a>.....
+          <a href="Our_Staff.html">Our Staff</a>.....
+          <a href="Curriculums.html">Curriculums</a>.....<a href="projects.html">Projects</a>
+          <a href="Search.html">
             <img style="float: right;" src="Images/search.jpg" height="7%" width="6%" onclick="">
           </a>
         </h1>
@@ -24,18 +24,18 @@
               <a class="nav-link" href="index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="HTML/AOC.html">About Our Club</a>
+              <a class="nav-link" href="AOC.html">About Our Club</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="HTML/FYS.html">Find Your School</a>
+              <a class="nav-link" href="FYS.html">Find Your School</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="HTML/Our_Staff.html">Our Staff</a>
+              <a class="nav-link" href="Our_Staff.html">Our Staff</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="HTML/Curriculums.html">Curriculums</a>
+              <a class="nav-link" href="Curriculums.html">Curriculums</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="HTML/projects.html">Projects</a>
+              <a class="nav-link" href="projects.html">Projects</a>
       </div>
     </nav>
