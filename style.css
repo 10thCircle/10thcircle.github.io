@@ -14,26 +14,6 @@ p {
 h1 {
     color: transparent;
 }
-
-.header {
-    position: relative;
-    height: 150px;
-    width: 100%;
-    background-color: rgb(238, 238, 238);
-    align-content: center;
-}
-
-.header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 150px;
-    width: 100%;
-    background-color: blue;
-    z-: -1;
-}
-
 .button {
     color: gray;
 }
