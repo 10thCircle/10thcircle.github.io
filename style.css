@@ -31,7 +31,7 @@ h1 {
     height: 150px;
     width: 100%;
     background-color: blue;
-    z-index: -1;
+    z-: -1;
 }
 
 .button {

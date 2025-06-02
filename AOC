@@ -11,12 +11,12 @@
         <img src="../Images/gajlogo.png" height="100" width="100">
         <span class="orange">10th Circle</span> 
 
-        .....<a href="https://10thcircle.github.io/index.html">Home</a>.....
-        <a href="FYS.html">Find Your School</a>.....
-        <a href="Our_Staff.html">Our Staff</a>.....
-        <a href="curriculums.html">Curriculums</a>.....
-        <a href="projects.html">Projects</a>
-        <a href="search.html">
+        .....<a href="https://10thcircle.github.io/">Home</a>.....
+        <a href="FYS">Find Your School</a>.....
+        <a href="Our_Staff">Our Staff</a>.....
+        <a href="curriculums">Curriculums</a>.....
+        <a href="projects">Projects</a>
+        <a href="search">
           <img style="float: right;" src="../Images/search.jpg" height="100" width="100" onclick="">
         </a>
       </h1>
@@ -40,7 +40,7 @@
         <h2>Information:</br>
           Original Location: 2250 N Clifton Ave, Chicago, IL 60614
         </h2>
-        <a href="FYS.html">To sign up click here</a>
+        <a href="FYS">To sign up click here</a>
       </div>
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968.586684165539!2d-87.66061432347205!3d41.92324306258574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd31d9db7af85%3A0x24f0f297392ca154!2sOscar%20F%20Mayer%20School!5e0!3m2!1sen!2sus!4v1736863016294!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </br>
@@ -59,11 +59,11 @@
       <h3>
       10th Circle </br>
       Pages: </br>
-      <a href="Home.html">Home</a>
-      <a href="AOC.html">About our club</a></br>
-      <a href="FYS.html">Find your school</a></br>
-      <a href="Our_Staff.html">Our Staff</a></br>
-      <a href="curriculums.html">Curriculums</a></br>
+      <a href="Home">Home</a>
+      <a href="AOC">About our club</a></br>
+      <a href="FYS">Find your school</a></br>
+      <a href="Our_Staff">Our Staff</a></br>
+      <a href="curriculums">Curriculums</a></br>
       &#169;, 10th Circle 2025
       </h3>
     </div>

@@ -20,13 +20,13 @@
 <img scr="../Images/gajlogo.png" height="100" width="100"> 
         <span class="orange">10th Circle</span> 
 
-        .....<a href="https://10thcircle.github.io/index.html">Home</a>.....
-        <a href="AOC.html">About Our Club</a>.....
-        <a href="FYS.html">Find Your School</a>.....
-        <a href="Our_Staff.html">Our Staff</a>.....
-        <a href="curriculums.html">Curriculums</a>.....
-        <a href="projects.html">Projects</a>
-        <a href="search.html">
+        .....<a href="https://10thcircle.github.io/">Home</a>.....
+        <a href="AOC">About Our Club</a>.....
+        <a href="FYS">Find Your School</a>.....
+        <a href="Our_Staff">Our Staff</a>.....
+        <a href="curriculums">Curriculums</a>.....
+        <a href="projects">Projects</a>
+        <a href="search">
           <img style="float: right;" src="../Images/search.jpg" height="100" width="100" onclick="">
         </a>
       </h1>
@@ -61,11 +61,11 @@
         <h3>
         10th Circle </br>
         Pages: </br>
-        <a href="Home.html">Home</a>
-        <a href="AOC.html">About our club</a></br>
-        <a href="FYS.html">Find your school</a></br>
-        <a href="Our_Staff.html">Our Staff</a></br>
-        <a href="curriculums.html">Curriculums</a></br>
+        <a href="Home">Home</a>
+        <a href="AOC">About our club</a></br>
+        <a href="FYS">Find your school</a></br>
+        <a href="Our_Staff">Our Staff</a></br>
+        <a href="curriculums">Curriculums</a></br>
         &#169;, 10th Circle 2025
         </h3>
       </div>

@@ -3,39 +3,39 @@
         <h1>
           <img src="Images/gajlogo.png" height="100" width="100">
           <span class="orange">10thCircle</span>
-          .....<a href="AOC.html">About Our Club</a>.....
-          <a href="FYS.html">Find Your School</a>.....
-          <a href="Our_Staff.html">Our Staff</a>.....
-          <a href="Curriculums.html">Curriculums</a>.....<a href="projects.html">Projects</a>
-          <a href="Search.html">
+          .....<a href="AOC">About Our Club</a>.....
+          <a href="FYS">Find Your School</a>.....
+          <a href="Our_Staff">Our Staff</a>.....
+          <a href="Curriculums">Curriculums</a>.....<a href="projects">Projects</a>
+          <a href="Search">
             <img style="float: right;" src="Images/search.jpg" height="7%" width="6%" onclick="">
           </a>
         </h1>
       </div>
 2. <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <div class="container">
-        <a class="navbar-brand logo" href="index.html">10thCircle</a>
+        <a class="navbar-brand logo" href="">10thCircle</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul id="topMenu" class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="AOC.html">About Our Club</a>
+              <a class="nav-link" href="AOC">About Our Club</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="FYS.html">Find Your School</a>
+              <a class="nav-link" href="FYS">Find Your School</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Our_Staff.html">Our Staff</a>
+              <a class="nav-link" href="Our_Staff">Our Staff</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Curriculums.html">Curriculums</a>
+              <a class="nav-link" href="Curriculums">Curriculums</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="projects.html">Projects</a>
+              <a class="nav-link" href="projects">Projects</a>
       </div>
     </nav>
