@@ -40,24 +40,45 @@
     <img src="../Images/coding-4.jpg" height="500px" width="100%" alt="Image of 10th Circle students coding"/>
 
     <h2>Volunteer Sign-up Form</h2>
-    <form action="/submit-volunteer-signup" method="post">
+    <form action="?action=save" method="post">
       <label for="name">Name:</label>
-      <input type="text" id="name" name="name"><br><br>
+        <input type="text" id="name" name="name"><br><br>
       <label for="email">Email:</label>
-      <input type="email" id="email" name="email"><br><br>
+        <input type="email" id="email" name="email"><br><br>
       <label for="availability">Availability:</label>
-      <textarea id="availability" name="availability"></textarea><br><br>
+        <textarea id="availability" name="availability"></textarea><br><br>
       <label for="language">Programming Language you want to teach: </label>
-      <select id="language" name="language" multiple>
-        <option value="scratch">Scratch</option>
-        <option value ="html">HTML</option>
-        <option value ="css">CSS</option>
-        <option value ="javascript">JavaScript</option>
-        <option value ="everything">All of the Above</option>
-      </select>
+        <input type="radio" id="scratch" name="language" value="scratch">
+        <label for="scratch">Scratch</label><br>
+        <input type="radio" id="html" name="language" value="html">
+        <label for="html">HTML</label><br>
+        <input type="radio" id="css" name="language" value="css">
+        <label for="css">CSS</label><br>
+        <input type="radio" id="javascript" name="language" value="javascript">
+        <label for="javascript">JavaScript</label><br>
+        <input type="radio" id="everything" name="language" value="everything">
+        <label for="everything">All of the Above</label><br>
+      <label>Are you a teacher already?</label>
+        <input type="radio" id="yes" name="teacher" value="yes">
+        <input type="radio" id="no" name="teacher" value="no">
+      <label>What school do you work at or want to work at?</label>
+        <input type="text" id="school" name="school"><br><br>
       <input type="submit" value="Submit">
     </form>
+    <?php
+    $action = $_GET["action"];
+    $mydata = $_POST["name", "email", "availability", "language", "teacher", "school"];
+    if($action == "save" && empty($mydata)) {
+      echo "<p>Please fill out the form before submitting.</p>";
+    } elseif($action == "save") {
+      echo "<p>Thank you for signing up!</p>";
+    }
 
+    if($action == "save") {
+      $targetFolder = "/path/to/folder";
+      file_put_contents($targetFolder."form1storage.txt", <br>$mydata);
+    }
+    ?>
     <div class="footer">
       &copy; 2023 10th Circle
     </div>
