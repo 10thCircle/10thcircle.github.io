@@ -4,6 +4,8 @@
     <link rel="stylesheet" href="https://10thcircle.github.io/style.css">
     <title> 10th Circle - Volunteer Sign-up </title>
     <link rel="icon" type="image/x-icon" href="../Images/gajlogo.png">
+    <script>
+    </script>
   </head>
   <body>
     <header class="header">
@@ -40,7 +42,7 @@
     <img src="../Images/coding-4.jpg" height="500px" width="100%" alt="Image of 10th Circle students coding"/>
 
     <h2>Volunteer Sign-up Form</h2>
-    <form action="?action=save" method="post">
+    <form action="vs(not-vs-code).php" ?action=save method=post>
       <label for="name">Name:</label>
         <input type="text" id="name" name="name"><br><br>
       <label for="email">Email:</label>
@@ -65,20 +67,6 @@
         <input type="text" id="school" name="school"><br><br>
       <input type="submit" value="Submit">
     </form>
-    <?php
-    $action = $_GET["action"];
-    $mydata = $_POST["name", "email", "availability", "language", "teacher", "school"];
-    if($action == "save" && empty($mydata)) {
-      echo "<p>Please fill out the form before submitting.</p>";
-    } elseif($action == "save") {
-      echo "<p>Thank you for signing up!</p>";
-    }
-
-    if($action == "save") {
-      $targetFolder = "/path/to/folder";
-      file_put_contents($targetFolder."form1storage.txt", <br>$mydata);
-    }
-    ?>
     <div class="footer">
       &copy; 2023 10th Circle
     </div>
